@@ -14,3 +14,5 @@ Question.create!(question: "問題その3の内容",
                  correct: "その3の正解",
                  proficiency: 1
                 )
+
+Answering.create!(answering_id: 1)

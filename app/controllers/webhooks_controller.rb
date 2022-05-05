@@ -1,8 +1,17 @@
 class WebhooksController < ApplicationController
 
+  include WebhooksHelper
+
   protect_from_forgery except: :callback
 
-  OMAJINAI = /アブラカタブラ|チチンプイプイ|ヒラケゴマ/
+  #OMAJINAI = /アブラカタブラ|チチンプイプイ|ヒラケゴマ/
+  #TOKUTEI = "mp"
+  #TOKUTEI = /mp|kai_./
+  #TOKUTEI = /mp|kai_.|s[1-5]/
+  TOKUTEI_MP = "mp"
+  TOKUTEI_K = "kai_."
+  TOKUTEI_S = "s[1-5]"
+
 
   def callback
     client = Line::Bot::Client.new do |config|
@@ -40,10 +49,17 @@ class WebhooksController < ApplicationController
   end
 
   def reaction_text(event)
-    if event.message['text'].match?(OMAJINAI)
-      'It is Omajinai'                          # 定数OMAJINAIに含まれる文字列の内、いずれかに一致した投稿がされた場合に返す値
-    elsif event.message['text'].match?('ruby')
-      'Is it Programming language? Ore?'        # `ruby`という文字列が投稿された場合に返す値
+    # if event.message['text'].match?(OMAJINAI)
+    if event.message['text'].match?(TOKUTEI_MP)
+      #'It is Omajinai'                          # 定数OMAJINAIに含まれる文字列の内、いずれかに一致した投稿がされた場合に返す値
+      get_question()
+      @question
+    elsif event.message['text'].match?(TOKUTEI_K)
+      get_correct()
+      @correct
+    elsif event.message['text'].match?(TOKUTEI_S)
+      update_proficiency(event.message['text'])
+      '習熟度を設定しました'
     else
       event.message['text']                     # 上記２つに合致しない投稿だった場合、投稿と同じ文字列を返す
     end
