@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_05_102933) do
+ActiveRecord::Schema.define(version: 2022_05_06_112956) do
 
   create_table "answerings", force: :cascade do |t|
     t.integer "answering_id"
@@ -24,6 +24,16 @@ ActiveRecord::Schema.define(version: 2022_05_05_102933) do
     t.integer "proficiency"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.string "authority"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end
