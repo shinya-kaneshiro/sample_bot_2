@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
 
-  before_action :set_user, only: [:index, :new, :create, :edit]
+  before_action :set_user, only: [:index, :new, :create, :edit, :update]
   before_action :set_question, only: [:edit, :update]
   before_action :set_questions, only: :index
 
@@ -28,7 +28,6 @@ class QuestionsController < ApplicationController
   end
 
   def update
-    debugger
     if @question.update(question_edit_params)
       flash[:success] = "内容を更新しました。"
       redirect_to user_questions_path
