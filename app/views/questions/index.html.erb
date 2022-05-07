@@ -1,0 +1,23 @@
+index_html.erbです
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">問題</th>
+      <th scope="col">回答</th>
+      <th scope="col">習熟度</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @questions.each do |quest| %>
+      <tr>
+      <td><%= quest.id %></td>
+      <td><%= quest.question %></td>
+      <td><%= quest.correct %></td>
+      <td><%= quest.proficiency %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
