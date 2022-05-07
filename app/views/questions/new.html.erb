@@ -1,4 +1,13 @@
-<h1>Questions#new</h1>
-<p>Find me in app/views/questions/new.html.erb</p>
+<% provide(:title, "New Question") %>
+<% provide(:class_text, 'NewQuestion') %>
+<% provide(:button_text, '新規登録') %>
+<% provide(:button_size, 'lg') %>
+<h1>問題新規登録</h1>
 
-<%= link_to "問題一覧画面", questions_index_user_path, class: "btn btn-primary" %>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <%= render 'form' %>
+  </div>
+</div>
+
+<p><%= @user.id %></p>

@@ -12,12 +12,15 @@ Rails.application.routes.draw do
   post '/callback', to: 'webhooks#callback'
 
   resources :users do
-    member do
+    resources :questions
+    #member do
       # 問題関連
+      #get 'questions/index'
       #get 'questions/new'
-      get '/questions/top', to: 'questions#new'
-      get 'questions/index'
-    end
+      #get '/questions/top', to: 'questions#new'
+      #post 'questions/create'
+
+    #end
   end
 
 end

@@ -14,7 +14,10 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Pricing</a>
       </li>
-      <li><%= link_to "ログアウト", logout_path, method: :delete, class: "nav-link" %></li>
+      <% if logged_in? %>
+        <li><%= link_to "問題登録", new_user_question_path(current_user), class: "nav-link" %></li>
+        <li><%= link_to "ログアウト", logout_path, method: :delete, class: "nav-link" %></li>
+      <% end %>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Dropdown link

@@ -3,7 +3,8 @@ class ApplicationController < ActionController::Base
 
   # paramsハッシュからユーザーを取得する。
   def set_user
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
+    @user = User.find(params[:user_id])
   end
 
   # 該当ユーザの問題レコードを全て取得する。
