@@ -13,4 +13,9 @@ class ApplicationController < ActionController::Base
     @questions = Question.where(user_id: @user.id)
   end
 
+  # paramsハッシュから対象のquestionレコードを取得する。
+  def set_question
+    @question = Question.find(params[:id])
+  end
+
 end

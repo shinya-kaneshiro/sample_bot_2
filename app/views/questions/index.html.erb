@@ -7,6 +7,7 @@ index_html.erbです
       <th scope="col">問題</th>
       <th scope="col">回答</th>
       <th scope="col">習熟度</th>
+      <th scope="col">リンク</th>
     </tr>
   </thead>
 
@@ -17,6 +18,9 @@ index_html.erbです
       <td><%= quest.question %></td>
       <td><%= quest.correct %></td>
       <td><%= quest.proficiency %></td>
+      <td>
+        <%= link_to "編集", edit_user_question_path(current_user, quest.id), class: "btn btn-success" %>
+      </td>
       </tr>
     <% end %>
   </tbody>
