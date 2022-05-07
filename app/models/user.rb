@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :questions
   attr_accessor :remember_token
   has_secure_password
 

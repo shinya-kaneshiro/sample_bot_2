@@ -10,17 +10,20 @@ User.create!(name: "Sample User",
 =begin 
 Question.create!(question: "問題その1の内容",
                  correct: "その1の正解",
-                 proficiency: 1
+                 proficiency: 1,
+                 user_id: 1
                 )
 
 Question.create!(question: "問題その2の内容",
                  correct: "その2の正解",
-                 proficiency: 1
+                 proficiency: 1,
+                 user_id: 1
                 )
 
 Question.create!(question: "問題その3の内容",
                  correct: "その3の正解",
-                 proficiency: 1
+                 proficiency: 1,
+                 user_id: 1
                 )
 
 Answering.create!(answering_id: 1)

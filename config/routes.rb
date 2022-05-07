@@ -10,4 +10,13 @@ Rails.application.routes.draw do
   
   # Messaging-API
   post '/callback', to: 'webhooks#callback'
+
+  resources :users do
+    member do
+      # 問題関連
+      #get 'questions/new'
+      get '/questions/top', to: 'questions#new'
+    end
+  end
+
 end
