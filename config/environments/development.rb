@@ -76,6 +76,6 @@ Rails.application.configure do
 
   # ngrok用
   #config.hosts << '.ngrok.io'
-  config.hosts << 'e19b-153-210-236-172.jp.ngrok.io'
+  config.hosts << '597f-153-210-236-172.jp.ngrok.io'
 
 end
