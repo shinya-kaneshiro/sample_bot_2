@@ -15,7 +15,7 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
     #@question = Question.new(question: params[:question][:question], correct: params[:question][:correct])
     @question.user_id = @user.id
-    @question.proficiency = 1
+    #@question.proficiency = 1
     if @question.save
       flash[:success] = "問題を新規作成しました。"
       redirect_to user_questions_path
@@ -28,7 +28,7 @@ class QuestionsController < ApplicationController
   end
 
   def update
-    if @question.update(question_edit_params)
+    if @question.update(question_params)
       flash[:success] = "内容を更新しました。"
       redirect_to user_questions_path
     else
@@ -38,11 +38,11 @@ class QuestionsController < ApplicationController
 
   private
     def question_params
-      params.require(:question).permit(:question, :correct)
-    end
-
-    def question_edit_params
       params.require(:question).permit(:question, :correct, :proficiency)
     end
+
+    #def question_edit_params
+    #  params.require(:question).permit(:question, :correct, :proficiency)
+    #end
 
 end

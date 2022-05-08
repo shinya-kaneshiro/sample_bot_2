@@ -13,14 +13,6 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :questions
-    #member do
-      # 問題関連
-      #get 'questions/index'
-      #get 'questions/new'
-      #get '/questions/top', to: 'questions#new'
-      #post 'questions/create'
-
-    #end
   end
 
 end

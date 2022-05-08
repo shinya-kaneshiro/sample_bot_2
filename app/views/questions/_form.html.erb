@@ -6,13 +6,11 @@
   <%= f.label :correct, class: "label-#{yield(:class_text)}" %>
   <%= f.text_area :correct, rows: 5, class: "form-control" %>
 
-  <% if controller.action_name == "edit" || "update" %>
-    <%= f.label :proficiency, class: "label-#{yield(:class_text)}" %>
-    <%= f.text_area :proficiency, rows: 5, class: "form-control" %>
-  <% end %>
+  <%= f.label :proficiency, class: "label-#{yield(:class_text)}" %>
+  <%= f.text_area :proficiency, rows: 5, class: "form-control" %>
 
   <%= f.submit yield(:button_text), class: "btn btn-#{yield(:button_size)} btn-primary btn-form" %>
-  <% if controller.action_name == "edit" || "update" %>
+  <% if controller.action_name == "edit" || controller.action_name == "update" %>
     <%= link_to "キャンセル", "#", class: "btn btn-md btn-default btn-form" %>
   <% end %>
 <% end %>
