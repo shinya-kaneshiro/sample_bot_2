@@ -1,4 +1,5 @@
 class WebhooksController < ApplicationController
+  before_action :check_result
 
   include WebhooksHelper
 
@@ -11,6 +12,9 @@ class WebhooksController < ApplicationController
   TOKUTEI_MP = "mp"
   TOKUTEI_K = "kai_."
   TOKUTEI_S = "s[1-5]"
+  TOKUTEI_ID = "id"
+  TOKUTEI_IDC = "idc"
+
 
 
   def callback
@@ -49,19 +53,30 @@ class WebhooksController < ApplicationController
   end
 
   def reaction_text(event)
-    # if event.message['text'].match?(OMAJINAI)
-    if event.message['text'].match?(TOKUTEI_MP)
-      #'It is Omajinai'                          # 定数OMAJINAIに含まれる文字列の内、いずれかに一致した投稿がされた場合に返す値
-      get_question()
-      @question
-    elsif event.message['text'].match?(TOKUTEI_K)
-      get_correct()
-      @correct
-    elsif event.message['text'].match?(TOKUTEI_S)
-      update_proficiency(event.message['text'])
-      '習熟度を設定しました'
+    if @check_result
+      # 定数TOKUTEI_MPに完全一致した場合
+      if event.message['text'] == TOKUTEI_MP
+        get_question()
+        @question
+      elsif event.message['text'].match?(TOKUTEI_K)
+        get_correct()
+        @correct
+      elsif event.message['text'].match?(TOKUTEI_S)
+        update_proficiency(event.message['text'])
+        '習熟度を設定しました'
+      #elsif event.message['text'].match?(TOKUTEI_ID)
+      elsif event.message['text'] == TOKUTEI_ID
+        get_line_id()
+        @line_id
+      #elsif event.message['text'].match?(TOKUTEI_IDC)
+      elsif event.message['text'] == TOKUTEI_IDC
+        check_id()
+        @check_message
+      else
+        event.message['text']                     # 上記２つに合致しない投稿だった場合、投稿と同じ文字列を返す
+      end
     else
-      event.message['text']                     # 上記２つに合致しない投稿だった場合、投稿と同じ文字列を返す
+      'IDが登録されていません'
     end
   end
 
