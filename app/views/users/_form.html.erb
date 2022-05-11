@@ -14,4 +14,9 @@
   <%= f.password_field :password_confirmation, class: "form-control" %>
 
   <%= f.submit yield(:button_text), class: "btn btn-primary btn-block btn-#{yield(:class_text)}" %>
+
+  <% if controller.action_name == "edit" || controller.action_name == "update" %>
+    <%= link_to "キャンセル", "#", class: "btn btn-md btn-primary btn-form" %>
+  <% end %>
+
 <% end %>

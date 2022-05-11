@@ -4,6 +4,11 @@ class User < ApplicationRecord
   attr_accessor :remember_token
   has_secure_password
 
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true, length: { maximum: 100 },
+                    format: { with: VALID_EMAIL_REGEX },
+                    uniqueness: true
+
   # ランダムなトークンを返す
   def User.new_token
     SecureRandom.urlsafe_base64

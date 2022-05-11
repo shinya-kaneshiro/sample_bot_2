@@ -1,10 +1,13 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
 
-  # paramsハッシュからユーザーを取得する。
+  # paramsハッシュからユーザーのidを取得する。
   def set_user
-    # @user = User.find(params[:id])
-    @user = User.find(params[:user_id])
+    if controller_name == "users"
+      @user = User.find(params[:id])
+    else
+      @user = User.find(params[:user_id])
+    end
   end
 
   # 該当ユーザの問題レコードを全て取得する。

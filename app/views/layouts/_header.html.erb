@@ -15,6 +15,18 @@
         <a class="nav-link" href="#">Pricing</a>
       </li>
       <% if logged_in? %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            User
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a><%= link_to "アカウント情報", new_user_question_path(current_user), class: "dropdown-item" %></a>
+            <a><%= link_to "アカウント編集", edit_user_path(current_user), class: "dropdown-item" %></a>
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
         <li><%= link_to "問題登録", new_user_question_path(current_user), class: "nav-link" %></li>
         <li><%= link_to "ログアウト", logout_path, method: :delete, class: "nav-link" %></li>
       <% end %>
