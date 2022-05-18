@@ -33,8 +33,8 @@ class WebhooksController < ApplicationController
       message = case event
                 when Line::Bot::Event::Message
                   { type: 'text', text: parse_message_type(event) }
-                else
-                  { type: 'text', text: '........' }
+                #else
+                #  { type: 'text', text: '........' }
                 end
       client.reply_message(event['replyToken'], message)
     end
