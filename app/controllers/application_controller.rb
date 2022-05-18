@@ -25,9 +25,11 @@ class ApplicationController < ActionController::Base
   # メッセージ送信者のline_user_idが存在した場合にユーザーオブジェクトを格納する。
   # 検証結果も別途格納する。
   def check_result
-    line_id = params[:events][0][:source][:userId]
-    @extract = User.find_by(line_user_id: line_id)
-    @check_result = @extract.present?
+    if params[:events].present?
+      line_id = params[:events][0][:source][:userId]
+      @extract = User.find_by(line_user_id: line_id)
+      @check_result = @extract.present?
+    end
   end
 
 end

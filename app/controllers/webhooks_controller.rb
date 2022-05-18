@@ -53,8 +53,12 @@ class WebhooksController < ApplicationController
   end
 
   def reaction_text(event)
+    #data = params[:events][0][:postback][:data] # postbackの場合
     if @check_result
       # 定数TOKUTEI_MPに完全一致した場合
+      #if event.message['text'] == TOKUTEI_MP
+      #  get_question()
+      #  @question
       if event.message['text'] == TOKUTEI_MP
         get_question()
         @question
