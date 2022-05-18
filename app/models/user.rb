@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  has_many :questions
-  has_many :answerings
+  has_many :questions, dependent: :destroy
+  has_many :answerings, dependent: :destroy
   attr_accessor :remember_token
   has_secure_password
 

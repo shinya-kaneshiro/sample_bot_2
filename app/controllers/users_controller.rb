@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :update]
+  before_action :set_user, only: [:edit, :update, :destroy]
 
   def new
     @user = User.new
@@ -24,6 +24,10 @@ class UsersController < ApplicationController
   #  render :new
   end
 
+  def index
+    @users = User.where.not(id: current_user.id).order(id: :asc)
+  end
+
   def edit
   end
 
@@ -34,6 +38,13 @@ class UsersController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    user = User.find(@user.id)
+    user.destroy
+    flash[:success] = "#{@user.name}のデータを削除しました。"
+    redirect_to users_path
   end
 
   private

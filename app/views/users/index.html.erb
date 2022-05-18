@@ -1,0 +1,28 @@
+<% provide(:title, 'ユーザ一覧') %>
+<%= render 'shared/error_messages', object: @user %>
+
+<h1 class="headline">ユーザ一覧</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">ユーザー名</th>
+      <th scope="col">最終ログイン</th>
+      <th scope="col">削除</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+      <td><%= user.id %></td>
+      <td><%= user.name %></td>
+      <td><%= l(user.last_login, format: :short) %></td>
+      <td>
+        <%= link_to "削除", user_path(user), method: :delete, data: { confirm: "「#{user.name}」を削除します。よろしいですか？"}, class: "btn btn-success" %>
+      </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
