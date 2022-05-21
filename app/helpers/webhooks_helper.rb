@@ -2,7 +2,8 @@ module WebhooksHelper
     def get_question
         id_array = @extract.questions.pluck(:id)
         rand_question_id = id_array.sample(1).first
-        @question = Question.find(rand_question_id).question
+        #@question = Question.find(rand_question_id).question
+        @question = Question.find(rand_question_id)
         answering_user = @extract.answerings.first
         answering_user.answering_id = rand_question_id
         answering_user.save
@@ -10,15 +11,20 @@ module WebhooksHelper
 
     def get_correct
         answering_status()
-        correct = Question.find(answering_status).correct
-        @correct = "#{correct}\n- - - - - - - - - -\n習熟度を設定してください。"
+        @correct = Question.find(answering_status)
+        #correct = Question.find(answering_status).correct
+        #@correct = "#{correct}\n- - - - - - - - - -\n習熟度を設定してください。"
     end
 
-    def update_proficiency(text)
+    def update_proficiency(value)
         answering_status()
         question = Question.find(answering_status)
-        question.proficiency = text.slice(-1)
-        question.save
+        question.proficiency = value
+        if question.save
+            @update_message = '習熟度を設定しました。'
+        else
+            @update_message = false
+        end
     end
 
     def get_line_id()
@@ -26,7 +32,7 @@ module WebhooksHelper
     end
 
     def check_id()
-        check_result()
+        #check_result()
         if @check_result
           @check_message = 'ID登録済み'
         else
