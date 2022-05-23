@@ -13,6 +13,9 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :questions
+    resources :challenges
+    post 'challenges/ajax_update', to: 'challenges#ajax_update'
+    patch 'challenges/update_proficiency', to: 'challenges#update_proficiency'
   end
 
 end

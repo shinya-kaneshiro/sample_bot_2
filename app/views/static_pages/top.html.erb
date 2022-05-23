@@ -1,4 +1,17 @@
-<h1>StaticPages#top</h1>
-<p>Find me in app/views/static_pages/top.html.erb</p>
+<% provide(:title, "Top") %>
 
-<%= link_to "仮のボタンです", "#", class: "btn btn-primary" %>
+<div class="jumbotron">
+
+  <div class="container h-50">
+    <div class="d-flex align-items-end justify-content-center h-100">
+      <h1>Against the forgetting curve</h1>
+    </div>
+  </div>
+
+  <div class="container h-50">
+    <div class="d-flex align-items-center justify-content-center h-100">
+      <%= link_to "ログイン", login_path, class: "btn btn-lg btn-primary" %>
+    </div>
+  </div>
+
+</div>
