@@ -1,16 +1,38 @@
-<%= form_with(model:[@user, @question], local: true) do |f| %>
-<%= render 'shared/error_messages', object: @question %>
-  <%= f.label :question, class: "label-#{yield(:class_text)}" %>
-  <%= f.text_field :question, class: "form-control" %>
+<div class="jumbotron jumbotron-none jumbotron-long">
+  <div class="row form-row-common">
+    <div class="col-md-6 col-md-offset-3">
+    <h1 class="headline">Against the forgetting curve</h1>
+      <%= form_with(model:[@user, @question], local: true) do |f| %>
+      <%= render 'shared/error_messages', object: @question %>
 
-  <%= f.label :correct, class: "label-#{yield(:class_text)}" %>
-  <%= f.text_area :correct, rows: 5, class: "form-control" %>
+        <div class="form-content-common">
+          <label class="form-label-common">問題</label>
+          <%= f.text_area :question, rows: 5, class: "form-control" %>
+        </div>
 
-  <%= f.label :proficiency, class: "label-#{yield(:class_text)}" %>
-  <%= f.text_area :proficiency, rows: 5, class: "form-control" %>
+        <div class="form-content-common">
+          <label class="form-label-common">正解</label>
+          <%= f.text_area :correct, rows: 5, class: "form-control" %>
+        </div>
 
-  <%= f.submit yield(:button_text), class: "btn btn-#{yield(:button_size)} btn-primary btn-form" %>
-  <% if controller.action_name == "edit" || controller.action_name == "update" %>
-    <%= link_to "キャンセル", "#", class: "btn btn-md btn-default btn-form" %>
-  <% end %>
-<% end %>
+        <div class="form-content-common">
+          <label class="form-label-common">習熟度</label>
+          <%= f.text_field :proficiency, class: "form-control" %>
+        </div>
+                
+        <div class="form-content-common">
+          <div class="button-group">
+            <a class="btn-content bs-lg cubic">
+              <span class="hovering"><%= f.submit yield(:button_text), class: "submit-layout a-side" %></span>
+              <span class="default"><%= f.submit yield(:button_text), class: "submit-layout b-side" %></span>
+            </a>
+          </div>
+        </div>
+        <% if controller.action_name == "edit" || controller.action_name == "update" %>
+          <%= link_to "キャンセル", user_questions_path(@user.id), class: "btn btn-md btn-danger" %>
+        <% end %>
+
+      <% end %>
+    </div>
+  </div>
+</div>

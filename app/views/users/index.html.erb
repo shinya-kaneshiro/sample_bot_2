@@ -1,28 +1,35 @@
-<% provide(:title, 'ユーザ一覧') %>
-<%= render 'shared/error_messages', object: @user %>
+<% provide(:title, 'User-index') %>
 
-<h1 class="headline">ユーザ一覧</h1>
+<div class="jumbotron jumbotron-none jumbotron-long">
+  <div class="row form-row-common">
 
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">ユーザー名</th>
-      <th scope="col">最終ログイン</th>
-      <th scope="col">削除</th>
-    </tr>
-  </thead>
+    <h1 class="headline">Against the forgetting curve</h1>
+    <%= render 'shared/error_messages', object: @user %>
+    <%= render 'shared/flash_messages' %>
 
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-      <td><%= user.id %></td>
-      <td><%= user.name %></td>
-      <td><%= l(user.last_login, format: :short) %></td>
-      <td>
-        <%= link_to "削除", user_path(user), method: :delete, data: { confirm: "「#{user.name}」を削除します。よろしいですか？"}, class: "btn btn-success" %>
-      </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <table class="table table-bordered table-striped table-over">
+      <thead class="table-column">
+        <tr>
+          <th class="col-1 align-middle text-center">ID</th>
+          <th class="col-3 align-middle text-center">ユーザー名</th>
+          <th class="col-5 align-middle text-center">最終ログイン</th>
+          <th class="col-1 align-middle text-center">削除</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td class="align-middle text-center"><%= user.id %></td>
+            <td><%= user.name %></td>
+            <td><%= l(user.last_login, format: :short) %></td>
+            <td class="text-center">
+              <%= link_to "削除", user_path(user), method: :delete, data: { confirm: "「#{user.name}」を削除します。よろしいですか？"}, class: "btn btn-success" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+</div>

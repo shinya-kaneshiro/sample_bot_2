@@ -1,4 +1,10 @@
 
+
+// 変数
+$cWhite: white;
+$cBlack: black;
+
+// 画面背景
 .jumbotron {
     background-image: url('../images/top_page_image.jpg');
     background-repeat: no-repeat;
@@ -7,15 +13,197 @@
     height: 100vh;
  }
  
- .challenge-question {
-     background-color: #00ffff2b;
-     height: 50px;
- }
+.jumbotron-none {
+    margin-top: -25px;
+    margin-bottom: 0;
+    border-radius: 0;
+}
 
- .challenge-margin {
-     margin-top: 20px;
- }
+.jumbotron.jumbotron-long{
+    height: auto;
+}
 
- .challenge-input {
-     background-color: #7fff0042;
- }
+// テーブル
+.table-over {
+    background-color: rgba(255, 255, 255, 0.90);
+}
+
+// top画面
+.top-container {
+    position: relative;
+    height: 100%;
+}
+
+// フォーム
+.form-row-common {
+    justify-content: center;
+}
+
+.form-label-common {
+    display: inline-block;
+    width: 200px;
+    height: 5%;
+    background-color: rgba(49, 136, 209, 0.68);
+    color: white;
+    padding-left: 2px;
+    margin-bottom: 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 5px;
+}
+
+.form-content-common {
+    margin-bottom: 20px;
+}
+
+.submit-layout {
+    display: inline-block;
+    width: 100%;
+
+    &.a-side {
+        opacity: 0;
+        &:hover {
+            opacity: 1;
+            background-color: $cBlack;
+            color: $cWhite;
+        }
+    }
+    &.b-side {
+        background-color: $cWhite;
+        color: $cBlack;
+    }
+}
+
+.headline {
+    color: black;
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.68);
+    padding: 5px 10px 10px 10px;
+    outline: double 5px #adaeae;
+    outline-offset: -6px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    width: 100%;
+    text-align: center;
+}
+
+//ボタン
+.button-group {
+    display:flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    width: 100%;
+    height: 100%;
+}
+
+.btn-content {
+    position: relative;
+    display: inline-block;
+    transform-style: preserve-3d;
+    perspective: 300px;
+    margin: 0 auto;
+    cursor: pointer;
+
+    &.bs-sm {
+        width: 150px;
+        height: 50px;    
+    }
+    &.bs-lg {
+        width: 100%;
+        height: 50px;    
+    }
+
+    &.cubic {
+        & span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 1px solid $cBlack;
+            line-height: 48px;
+            text-align: center;
+            transition: all 0.3s;
+            transform-origin: center center -25px;
+        }
+
+        & .hovering {
+            background-color: $cBlack;
+            color: $cWhite;
+            transform: rotateX(90deg);
+        }
+
+        & .default {
+            background-color: $cWhite;
+            color: $cBlack;
+            transform: rotateX(0);
+        }
+
+        &:hover {
+            & .hovering {
+                transform: rotateX(0);
+            }
+            & .default {
+                transform: rotateX(-90deg);
+            }
+        }
+    }
+}
+
+//チャレンジ画面
+
+.challenge-question-view {
+    position: relative;
+    background-color: white;
+    width: 40%;
+    height: 20%;
+}
+
+.challenge-correct-view {
+    position: relative;
+    background-color: white;
+    width: 40%;
+    height: 20%;
+}
+
+.challenge-input-form {
+    position: relative;
+    background-color: white;
+    width: 40%;
+    height: 20%;
+}
+
+.challenge-input {
+    background-color: #fffde7;
+}
+
+.challenge-margin {
+    margin-top:20px;
+}
+
+.proficiency-aria {
+    background-color: white;
+    margin: 10px 0px;
+}
+
+// チャレンジ画面【旧】
+.challenge-question {
+    background-color: #00ffff2b;
+    height: 50px;
+}
+
+
+
+
+// デバッグウインドウ
+.debug_dump {
+     clear: both;
+     float: left;
+     width: 100%;
+     margin-top: 45px;
+     -moz-box-sizing:    border-box;
+     -webkit-box-sizing: border-box;
+     box-sizing:         border-box;
+  }
+  

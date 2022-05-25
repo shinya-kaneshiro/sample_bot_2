@@ -1,17 +1,21 @@
 <% provide(:title, "Top") %>
 
-<div class="jumbotron">
-
-  <div class="container h-50">
-    <div class="d-flex align-items-end justify-content-center h-100">
-      <h1>Against the forgetting curve</h1>
+<div class="jumbotron jumbotron-none">
+  <div class="top-container">
+    <div class="row form-row-common">
+      <div class="col-md-6 col-md-offset-3">
+      <h1 class="headline">Against the forgetting curve</h1>
+  
+      <div class="button-group">
+        <a class="btn-content bs-sm cubic" href="/login">
+          <span class="hovering">Login</span>
+          <span class="default">Login</span>
+        </a>
+        <a class="btn-content bs-sm cubic" href="/users/new">
+          <span class="hovering">Sign-up</span>
+          <span class="default">Sign-up</span>
+        </a>
+      </div>
     </div>
-  </div>
-
-  <div class="container h-50">
-    <div class="d-flex align-items-center justify-content-center h-100">
-      <%= link_to "ログイン", login_path, class: "btn btn-lg btn-primary" %>
-    </div>
-  </div>
-
+  </div>    
 </div>

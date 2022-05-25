@@ -1,25 +1,36 @@
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">問題</th>
-      <th scope="col">回答</th>
-      <th scope="col">習熟度</th>
-      <th scope="col">リンク</th>
-    </tr>
-  </thead>
+<% provide(:title, "Qestion index") %>
 
-  <tbody>
-    <% @questions.each do |quest| %>
-      <tr>
-      <td><%= quest.id %></td>
-      <td><%= quest.question %></td>
-      <td><%= quest.correct %></td>
-      <td><%= quest.proficiency %></td>
-      <td>
-        <%= link_to "編集", edit_user_question_path(current_user, quest.id), class: "btn btn-success" %>
-      </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="jumbotron jumbotron-none jumbotron-long">
+  <div class="row form-row-common">
+
+    <h1 class="headline">Against the forgetting curve</h1>
+    <%= render 'shared/flash_messages' %>
+
+    <table class="table table-bordered table-striped table-over">
+      <thead class="table-column">
+        <tr>
+          <th class="col-1 align-middle text-center">ID</th>
+          <th class="col-3 align-middle text-center">問題</th>
+          <th class="col-5 align-middle text-center">回答</th>
+          <th class="col-1 align-middle text-center">習熟度</th>
+          <th class="col-1 align-middle text-center"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @questions.each do |quest| %>
+          <tr>
+          <td class="align-middle text-center"><%= quest.id %></td>
+          <td><%= quest.question %></td>
+          <td><%= quest.correct %></td>
+          <td class="align-middle text-center"><%= quest.proficiency %></td>
+          <td class="text-center">
+            <%= link_to "編集", edit_user_question_path(current_user, quest.id), class: "btn btn-success" %>
+          </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+</div>

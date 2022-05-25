@@ -1,22 +1,43 @@
-<%= form_with(model: @user, local: true) do |f| %>
-  <%= render 'shared/error_messages', object: @user %>
+<div class="jumbotron jumbotron-none">
+  <div class="row form-row-common">
+    <div class="col-md-6 col-md-offset-3">
+    <h1 class="headline">Against the forgetting curve</h1>
+      <%= form_with(model: @user, local: true) do |f| %>
+      <%= render 'shared/error_messages', object: @user %>
 
-  <%= f.label :name, class: "label-#{yield(:class_text)}" %>
-  <%= f.text_field :name, class: "form-control" %>
+        <div class="form-content-common">
+          <label class="form-label-common">名前</label>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
 
-  <%= f.label :email, class: "label-#{yield(:class_text)}" %>
-  <%= f.email_field :email, class: "form-control" %>
+        <div class="form-content-common">
+          <label class="form-label-common">メールアドレス</label>
+          <%= f.email_field :email, class: "form-control" %>
+        </div>
 
-  <%= f.label :password, class: "label-#{yield(:class_text)}" %>
-  <%= f.password_field :password, class: "form-control" %>
+        <div class="form-content-common">
+          <label class="form-label-common">パスワード</label>
+          <%= f.password_field :password, class: "form-control" %>
+        </div>
+        
+        <div class="form-content-common">
+          <label class="form-label-common">パスワード再入力</label>
+          <%= f.password_field :password_confirmation, class: "form-control" %>
+        </div>
 
-  <%= f.label :password_confirmation, class: "label-#{yield(:class_text)}" %>
-  <%= f.password_field :password_confirmation, class: "form-control" %>
+        <div class="form-content-common">
+          <div class="button-group">
+            <a class="btn-content bs-lg cubic">
+              <span class="hovering"><%= f.submit yield(:button_text), class: "submit-layout a-side" %></span>
+              <span class="default"><%= f.submit yield(:button_text), class: "submit-layout b-side" %></span>
+            </a>
+          </div>
+        </div>
+        <% if controller.action_name == "edit" || controller.action_name == "update" %>
+          <%= link_to "キャンセル", user_questions_path(@user.id), class: "btn btn-md btn-danger" %>
+        <% end %>
 
-  <%= f.submit yield(:button_text), class: "btn btn-primary btn-block btn-#{yield(:class_text)}" %>
-
-  <% if controller.action_name == "edit" || controller.action_name == "update" %>
-    <%= link_to "キャンセル", "#", class: "btn btn-md btn-primary btn-form" %>
-  <% end %>
-
-<% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
