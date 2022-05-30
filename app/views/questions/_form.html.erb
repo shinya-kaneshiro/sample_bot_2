@@ -5,7 +5,7 @@
       <%= form_with(model:[@user, @question], local: true) do |f| %>
       <%= render 'shared/error_messages', object: @question %>
 
-        <div class="form-content-common">
+        <div class="form-content-common form-content-top">
           <label class="form-label-common">問題</label>
           <%= f.text_area :question, rows: 5, class: "form-control" %>
         </div>

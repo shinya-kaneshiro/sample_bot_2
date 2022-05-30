@@ -40,11 +40,13 @@ $cBlack: black;
 
 .jumbotron.jumbotron-long{
     height: auto;
+    padding-top: 30px;
 }
 
 // テーブル
-.table-over {
+.table-common {
     background-color: rgba(255, 255, 255, 0.90);
+    margin-top: 40px;
 }
 
 // top画面
@@ -56,6 +58,10 @@ $cBlack: black;
 // フォーム
 .form-row-common {
     justify-content: center;
+}
+
+.challenge-form-top {
+    margin-top: 5px;
 }
 
 .form-label-common {
@@ -70,6 +76,10 @@ $cBlack: black;
     border-top-right-radius: 24px;
     border-bottom-right-radius: 0px;
     border-bottom-left-radius: 5px;
+}
+
+.form-content-top {
+    margin-top: 20px;
 }
 
 .form-content-common {
@@ -102,7 +112,7 @@ $cBlack: black;
     outline: double 5px #adaeae;
     outline-offset: -6px;
     border-radius: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 1px;
     width: 100%;
     text-align: center;
 }
@@ -198,7 +208,8 @@ $cBlack: black;
 }
 
 .challenge-margin {
-    margin-top:20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .correct-title {
@@ -226,11 +237,14 @@ $cBlack: black;
     width: 100%;
     height: 45px;
     margin-top: 10px;
+    margin-bottom: 20px;
     padding: 0;
     background-color: white;
     border: 1px;
     transition: all 0.3s;
     overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 5px;
 
     & span {
         position: absolute;
@@ -257,7 +271,7 @@ $cBlack: black;
     background-color: $cWhite;
     display: inline-block;
     width: 100%;
-    height: 93%;
+    height: 96%;
     border-radius: 4%;
     overflow: hidden;
 
@@ -289,12 +303,27 @@ $cBlack: black;
     }
 }
 
+.btn-next-question {
+    height: 70px;
+    border-radius: 12px;
+    border-top: 8px double white;
+    border-left: 8px double white;
+    border-right: 8px double black;
+    border-bottom: 8px double black;
+    &:hover {
+        border-top: 8px double white;
+        border-left: 8px double white;
+        border-right: 8px double black;
+        border-bottom: 8px double black;    
+    }
+}
+
 //ラジオボタン
 
 .proficiency-aria-parent {
     display: flex;
     background-color: white;
-    margin: 10px 0px;
+    margin: 0px 20px 20px 20px;
     border-radius: 12px;
 }
 

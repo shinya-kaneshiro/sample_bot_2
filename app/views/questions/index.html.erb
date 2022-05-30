@@ -1,12 +1,12 @@
 <% provide(:title, "Qestion index") %>
 
 <div class="jumbotron jumbotron-none jumbotron-long">
-  <div class="row form-row-common">
+  <div class="container">
+    <div class="row form-row-common">
+     <h1 class="headline">Against the forgetting curve</h1>
+     <%= render 'shared/flash_messages' %>
 
-    <h1 class="headline">Against the forgetting curve</h1>
-    <%= render 'shared/flash_messages' %>
-
-    <table class="table table-bordered table-striped table-over">
+    <table class="table table-bordered table-striped table-common">
       <thead class="table-column">
         <tr>
           <th class="col-1 align-middle text-center">ID</th>
@@ -31,6 +31,5 @@
         <% end %>
       </tbody>
     </table>
-
   </div>
 </div>
