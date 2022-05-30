@@ -13,18 +13,16 @@ class ChallengesController < ApplicationController
   end
 
   def update
-    proficiency = params[:value]
+    proficiency = params[:value].to_i
     question = Question.find(@user.answerings.first.answering_id)
-    question.proficiency = proficiency
-    if question.save
-      flash[:success] = '習熟度を設定しました。'
-      redirect_to new_user_challenge_path
-    else
-      flash[:danger] = '習熟度の設定に失敗しました。'
-      redirect_to new_user_challenge_path
+    unless question.proficiency == proficiency
+      question.proficiency = proficiency
+      question.save
+      flash[:success] = '習熟度を変更しました。'
     end
-end
-
+    redirect_to new_user_challenge_path
+  end
+  
   def ajax_update
     @text = Question.find(@user.answerings.first.answering_id).correct
   end

@@ -1,6 +1,33 @@
 // 「content」に@textの内容を代入する。
 var content = '<%= "#{ @text }" %>'
 
-//「id="ajax-test"」にcontentで書かれた内容を反映
-$('#ajax-test').text(content);
+if(!(content.match(/\r\n/g))) {
+    $('#ajax-test').text(content)
+    $('#ajax-test').text(content)
+    $('#ajax-test').text(content)
+} else {
+    let result = content.replace(/\r\n/g, "<br>")
+    $('#ajax-test').text(`${result}`)
+}
 
+//let result = content.match(/\r\n/g)
+let result = content.replace(/\r\n/g, "<br>")
+let aaa = content.match(/\r\n/g)
+//$('#ajax-test').text(`${aaa}`)
+
+
+//if(Boolean(result) === nill) {
+//    $('#ajax-test').text('aaa')
+//}
+
+//if(content.match(/\r\n/g)) {
+//    $('#ajax-test').text('改行あり');
+//}
+
+//「id="ajax-test"」にcontentで書かれた内容を反映
+
+//$('#ajax-test').text(`${result}`);
+
+
+
+//$('#ajax-test').text(content);

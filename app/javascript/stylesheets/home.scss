@@ -1,3 +1,22 @@
+// mixin
+@mixin animation(
+  $name, $duration: 1s,
+  $timing-function: ease,
+  $delay: 0s,
+  $iteration-count: 1,
+  $direction: normal,
+  $fill-mode: forwards
+  ) {
+  animation: {
+    name: $name;
+    duration: $duration;
+    timing-function: $timing-function;
+    delay: $delay;
+    iteration-count: $iteration-count;
+    direction: $direction;
+    fill-mode: $fill-mode;
+  }
+}
 
 
 // 変数
@@ -182,10 +201,157 @@ $cBlack: black;
     margin-top:20px;
 }
 
-.proficiency-aria {
+.correct-title {
+    position:relative ;
+    height: 50px;
+    background-color: #56ff0038;
+    text-align: center;
+    line-height: 50px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.correct-view-base {
+    padding-left: 5px;
+    padding-bottom: 30px;
+}
+
+.correct-view-area {
+    width: 99%;
+}
+
+.correct-button {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 45px;
+    margin-top: 10px;
+    padding: 0;
+    background-color: white;
+    border: 1px;
+    transition: all 0.3s;
+    overflow: hidden;
+
+    & span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        background-color: $cBlack;
+        color: white;
+        transform: translateX(-100%);
+        transition: all 0.3s;
+        line-height: 42px;
+    }
+    &:hover span {
+        transition: all 0.3s;
+        transform: none;
+    }
+}
+
+//チャレンジ画面【正解表示用スライド】
+.correct-form {
+    position: relative;
+    background-color: $cWhite;
+    display: inline-block;
+    width: 100%;
+    height: 93%;
+    border-radius: 4%;
+    overflow: hidden;
+
+    &::before {
+        content:'';
+        position: absolute;
+        background-color: #d9ffd9;
+        width: 100%;
+        height: 100%;
+        border-radius: 4%;
+        z-index: 2;
+        border: 1px solid;
+    }
+    &.correct-view {
+        &::before {
+        @include animation(
+            $name: correct-cover-silde,
+        );
+        }
+    }
+}
+
+@keyframes correct-cover-silde {
+    0% {
+        transform: translateY(0%);
+    }
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+//ラジオボタン
+
+.proficiency-aria-parent {
+    display: flex;
     background-color: white;
     margin: 10px 0px;
+    border-radius: 12px;
 }
+
+.proficiency-title {
+    position: relative;
+    display: inline-block;
+    width: 50%;
+    height: 70px;
+    background-color: #faebd7;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-top: 8px double white;
+    border-left: 8px double white;
+    border-bottom: 8px double black;
+    text-align: center;
+    line-height: 3em;
+    font-size: large;
+}
+
+.proficiency-aria {
+    position: relative;
+    display: flex;
+    width: 50%;
+    height: 70px;
+    background-color: antiquewhite;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    justify-content: center;
+    align-items: center;
+    border-top: 8px double white;
+    border-right: 8px double black;
+    border-bottom: 8px double black;
+}
+
+input[type=radio] {
+    display: inline-block;
+    height: 40px;
+    width: 50px;
+    margin: 0;
+
+    @for $i from 1 through 3 {
+        &.lavel-#{$i} {
+            &::before {
+                content: "#{$i}";
+                display: inline-block;
+                width: 50px;
+                height: 40px;
+                background-color: rgb(128 128 128 / 0%);
+                // text-align: center;
+                padding-left: 20px;
+                line-height: 36px;
+                color: #c5f5fb;
+            }
+        }
+    }
+}
+
 
 // チャレンジ画面【旧】
 .challenge-question {

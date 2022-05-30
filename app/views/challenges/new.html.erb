@@ -1,5 +1,4 @@
 <% provide(:title, 'Challenge') %>
-<% provide(:button_text, '答えを表示する') %>
 
 <div class="jumbotron jumbotron-none jumbotron-long">
   <div class="row form-row-common">
@@ -17,7 +16,7 @@
           <%= "問題ID: #{@question.id}"%>
         </div>
         <div class="card-body d-flex align-items-center justify-content-center">
-          <div><h5 class="card-title"><%= @question.question%></h5></div>
+          <div><h5 class="card-title"><%= simple_format(h(@question.question)) %></h5></div>
         </div>
       </div>
       <div class="text-right"><%= link_to "他の問題", new_user_challenge_path, class: "btn btn-info" %></div>
@@ -29,44 +28,36 @@
         <textarea class="form-control" aria-label="With textarea" rows="7"></textarea>
       </div>
 
-      <div class="form-content-common challenge-margin">
-        <div id="ajax-request">
-            <%= form_with url: user_challenges_ajax_update_path, local: false do |f| %>
-              <div class="button-group">
-                <a class="btn-content bs-lg cubic">
-                  <span class="hovering"><%= f.submit yield(:button_text), class: "submit-layout a-side" %></span>
-                  <span class="default"><%= f.submit yield(:button_text), class: "submit-layout b-side" %></span>
-                </a>
-              </div>
-            <% end %>
-        </div>
-      </div>
-
+      <button class="correct-button" onclick="document.querySelector('.correct-form').classList.toggle('correct-view');"><span>答えを表示する</span>答えを表示する</button>
 
     </div>
 
 
     <div class="col-lg-6">
-
-      <div class="card d-flex align-items-center justify-content-center">
-        <div class="card-body" id="ajax-test">正解表示欄
+      <div class="correct-form">
+        <div class="correct-title">正解</div>
+        <div class="correct-view-base">
+          <textarea class="correct-view-area" rows="12"><%= (@question.correct) %></textarea>
         </div>
       </div>
-
     </div>
 
-    <div class="col-12">
-      <div class="proficiency-aria">
+    <div class="col-lg-6">
       <%= form_with(url: user_challenges_update_proficiency_path, method: :patch, local: true) do |f| %>
-        <label><%= f.radio_button :value, 1, checked: true %>1</label>
-        <label><%= f.radio_button :value, 2 %>2</label>
-        <label><%= f.radio_button :value, 3 %>3</label>
-        <%= f.submit "次の問題", class: "btn btn-primary btn-block btn-#{yield(:class_text)}" %>
-      <% end %>
+      <div class="proficiency-aria-parent">
+        <div class="proficiency-title">習熟度の設定</div>
+        <div class="proficiency-aria">
+          <%= f.radio_button :value, 1, class: "lavel-1", checked: bool = @question.proficiency == 1 ? true : false %>
+          <%= f.radio_button :value, 2, class: "lavel-2", checked: bool = @question.proficiency == 2 ? true : false %>
+          <%= f.radio_button :value, 3, class: "lavel-3", checked: bool = @question.proficiency == 3 ? true : false %>
+        </div>
       </div>
     </div>
 
-
+    <div class="col-lg-6">
+        <%= f.submit "次の問題", class: "btn btn-primary btn-block btn-#{yield(:class_text)}" %>
+      <% end %>
+    </div>
 
   </div>
 </div>
