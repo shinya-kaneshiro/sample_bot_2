@@ -39,21 +39,23 @@
       </div>
     </div>
 
-    <div class="col-lg-6">
+    <div class="col-lg-6 offset-lg-3">
       <%= form_with(url: user_challenges_update_proficiency_path, method: :patch, local: true) do |f| %>
-      <div class="proficiency-aria-parent">
-        <div class="proficiency-title">習熟度の設定</div>
-        <div class="proficiency-aria">
-          <%= f.radio_button :value, 1, class: "lavel-1", checked: bool = @question.proficiency == 1 ? true : false %>
-          <%= f.radio_button :value, 2, class: "lavel-2", checked: bool = @question.proficiency == 2 ? true : false %>
-          <%= f.radio_button :value, 3, class: "lavel-3", checked: bool = @question.proficiency == 3 ? true : false %>
+        <div class="proficiency-aria-parent">
+          <div class="proficiency-title">習熟度の設定</div>
+          <div class="proficiency-aria">
+            <%= f.radio_button :value, 1, class: "lavel-1", checked: bool = @question.proficiency == 1 ? true : false %>
+            <%= f.radio_button :value, 2, class: "lavel-2", checked: bool = @question.proficiency == 2 ? true : false %>
+            <%= f.radio_button :value, 3, class: "lavel-3", checked: bool = @question.proficiency == 3 ? true : false %>
+          </div>
         </div>
-      </div>
+        <div>
+          <%= f.submit "次の問題", class: "btn btn-primary btn-block btn-next-question" %>
+        </div>
+      <% end %>
     </div>
 
     <div class="col-lg-6">
-        <%= f.submit "次の問題", class: "btn btn-primary btn-block btn-next-question" %>
-      <% end %>
     </div>
 
   </div>
