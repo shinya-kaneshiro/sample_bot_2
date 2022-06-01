@@ -1,38 +1,40 @@
-<% provide(:title, "Qestion index") %>
+<% provide(:title, "Question index") %>
+<% provide(:page_title, "Question Index page") %>
 
 <div class="jumbotron jumbotron-none jumbotron-long">
   <div class="container">
     <div class="row form-row-common">
-     <h1 class="headline">Against the forgetting curve</h1>
-     <%= render 'shared/flash_messages' %>
+      <h1 class="headline page-title"><%= yield(:page_title) %></h1>
+      <%= render 'shared/flash_messages' %>
 
-   <div class="willpaginate-button-top"><%= will_paginate %></div>
-    <table class="table table-bordered table-striped table-common">
-      <thead class="table-column">
-        <tr>
-          <th class="col-1 align-middle text-center">ID</th>
-          <th class="col-3 align-middle text-center">問題</th>
-          <th class="col-5 align-middle text-center">回答</th>
-          <th class="col-1 align-middle text-center">習熟度</th>
-          <th class="col-1 align-middle text-center"></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @questions.each do |quest| %>
+      <div class="willpaginate-button-top"><%= will_paginate %></div>
+      <table class="table table-bordered table-striped table-common">
+        <thead class="table-column">
           <tr>
-          <td class="align-middle text-center"><%= quest.id %></td>
-          <td><%= simple_format(h(quest.question)) %></td>
-          <td><%= simple_format(h(quest.correct)) %></td>
-          <td class="align-middle text-center"><%= quest.proficiency %></td>
-          <td class="text-center">
-            <%= link_to "編集", edit_user_question_path(current_user, quest.id), class: "btn btn-success" %>
-            <%= link_to "削除", user_question_path(current_user, quest.id), method: :delete, data: { confirm: "「問題ID: #{quest.id}」を削除します。よろしいですか？"}, class: "btn btn-success" %>
-          </td>
+            <th class="col-1 align-middle text-center">ID</th>
+            <th class="col-3 align-middle text-center">問題</th>
+            <th class="col-5 align-middle text-center">回答</th>
+            <th class="col-1 align-middle text-center">習熟度</th>
+            <th class="col-1 align-middle text-center"></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <%= will_paginate %>
+        </thead>
+
+        <tbody>
+          <% @questions.each do |quest| %>
+            <tr>
+            <td class="align-middle text-center"><%= quest.id %></td>
+            <td><%= simple_format(h(quest.question)) %></td>
+            <td><%= simple_format(h(quest.correct)) %></td>
+            <td class="align-middle text-center"><%= quest.proficiency %></td>
+            <td class="text-center align-middle">
+              <%= link_to "編集", edit_user_question_path(current_user, quest.id), class: "btn btn-edit" %>
+              <%= link_to "削除", user_question_path(current_user, quest.id), method: :delete, data: { confirm: "「問題ID: #{quest.id}」を削除します。よろしいですか？"}, class: "btn btn-delete" %>
+            </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= will_paginate %>
+    </div>
   </div>
 </div>

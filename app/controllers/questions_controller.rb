@@ -37,7 +37,6 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    # question_user_id = @question.user_id
     @question.destroy
     flash[:success] = "#「問題ID: {@questin.id}」を削除しました。"
     user_questions_count = @user.questions.count
@@ -46,7 +45,6 @@ class QuestionsController < ApplicationController
     else
       redirect_url_base = request.referer.split('=').first
       last_page_number = request.referer.split('=').last
-        # user_questions_count = Question.where(user_id: question_user_id).count
       redirect_page_number = user_questions_count % PAGE_NUMBER == 0 ? last_page_number.to_i - 1 : last_page_number
       redirect_url = "#{redirect_url_base}=#{redirect_page_number}"
       redirect_to redirect_url

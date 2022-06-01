@@ -1,13 +1,13 @@
 <% provide(:title, 'User-index') %>
+<% provide(:page_title, "User Index page") %>
 
 <div class="jumbotron jumbotron-none jumbotron-long">
-  <div class="row form-row-common">
+  <div class="container">
+    <div class="row form-row-common">
+      <h1 class="headline page-title"><%= yield(:page_title) %></h1>
+      <%= render 'shared/flash_messages' %>
 
-    <h1 class="headline">Against the forgetting curve</h1>
-    <%= render 'shared/error_messages', object: @user %>
-    <%= render 'shared/flash_messages' %>
-
-    <table class="table table-bordered table-striped table-over">
+    <table class="table table-bordered table-striped table-common">
       <thead class="table-column">
         <tr>
           <th class="col-1 align-middle text-center">ID</th>
@@ -24,12 +24,13 @@
             <td><%= user.name %></td>
             <td><%= l(user.last_login, format: :short) %></td>
             <td class="text-center">
-              <%= link_to "削除", user_path(user), method: :delete, data: { confirm: "「#{user.name}」を削除します。よろしいですか？"}, class: "btn btn-success" %>
+              <%= link_to "削除", user_path(user), method: :delete, data: { confirm: "「#{user.name}」を削除します。よろしいですか？"}, class: "btn btn-danger" %>
             </td>
           </tr>
         <% end %>
       </tbody>
     </table>
 
+    </div>
   </div>
 </div>
