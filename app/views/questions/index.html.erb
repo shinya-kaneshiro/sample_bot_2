@@ -6,6 +6,7 @@
      <h1 class="headline">Against the forgetting curve</h1>
      <%= render 'shared/flash_messages' %>
 
+   <div class="willpaginate-button-top"><%= will_paginate %></div>
     <table class="table table-bordered table-striped table-common">
       <thead class="table-column">
         <tr>
@@ -31,5 +32,6 @@
         <% end %>
       </tbody>
     </table>
+    <%= will_paginate %>
   </div>
 </div>

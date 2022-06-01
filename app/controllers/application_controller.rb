@@ -13,7 +13,8 @@ class ApplicationController < ActionController::Base
   # 該当ユーザの問題レコードを全て取得する。
   # before_actionとして配置する際は、set_userより後段に記述しないと動作しない（はず）。
   def set_questions
-    @questions = Question.where(user_id: @user.id)
+    # @questions = Question.where(user_id: @user.id)
+    @questions = Question.paginate(page: params[:page], per_page: 10)
   end
 
   # paramsハッシュから対象のquestionレコードを取得する。
