@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
 
+  # will-pagenateの表示レコード数
   PAGE_NUMBER = 10
 
   # paramsハッシュからユーザーのidを取得する。

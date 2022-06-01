@@ -25,6 +25,13 @@
           <%= f.password_field :password_confirmation, class: "form-control" %>
         </div>
 
+        <% if controller.action_name == "edit" || controller.action_name == "update" %>
+        <div class="form-content-common">
+          <label class="form-label-common">LINE ID</label>
+          <%= f.text_field :line_user_id, class: "form-control" %>
+        </div>
+        <% end %>
+
         <div class="form-content-common">
           <div class="button-group">
             <a class="btn-content bs-lg cubic">
