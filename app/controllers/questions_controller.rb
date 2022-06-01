@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
 
-  before_action :set_user, only: [:index, :new, :create, :edit, :update]
-  before_action :set_question, only: [:edit, :update]
+  before_action :set_user, only: [:index, :new, :create, :edit, :update, :destroy]
+  before_action :set_question, only: [:edit, :update, :destroy]
   before_action :set_questions, only: :index
 
   def new
@@ -34,6 +34,24 @@ class QuestionsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    # question_user_id = @question.user_id
+    @question.destroy
+    flash[:success] = "#「問題ID: {@questin.id}」を削除しました。"
+    user_questions_count = @user.questions.count
+    if user_questions_count == 0
+      redirect_to user_questions_path
+    else
+      redirect_url_base = request.referer.split('=').first
+      last_page_number = request.referer.split('=').last
+        # user_questions_count = Question.where(user_id: question_user_id).count
+      redirect_page_number = user_questions_count % PAGE_NUMBER == 0 ? last_page_number.to_i - 1 : last_page_number
+      redirect_url = "#{redirect_url_base}=#{redirect_page_number}"
+      redirect_to redirect_url
+    end
+      
   end
 
   private

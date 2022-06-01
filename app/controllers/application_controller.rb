@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
 
+  PAGE_NUMBER = 10
+
   # paramsハッシュからユーザーのidを取得する。
   def set_user
     if controller_name == "users"
@@ -14,7 +16,8 @@ class ApplicationController < ActionController::Base
   # before_actionとして配置する際は、set_userより後段に記述しないと動作しない（はず）。
   def set_questions
     # @questions = Question.where(user_id: @user.id)
-    @questions = Question.paginate(page: params[:page], per_page: 10)
+    # @questions = Question.paginate(page: params[:page], per_page: PAGE_NUMBER)
+    @questions = @user.questions.paginate(page: params[:page], per_page: PAGE_NUMBER)
   end
 
   # paramsハッシュから対象のquestionレコードを取得する。
