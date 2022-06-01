@@ -3,13 +3,26 @@ class ChallengesController < ApplicationController
 
 
   def new
-    id_array = @user.questions.pluck(:id)
-    rand_question_id = id_array.sample(1).first
-    @question = Question.find(rand_question_id)
-    answering_user = @user.answerings.first
-    answering_user.answering_id = rand_question_id
-    answering_user.save
-    #debugger
+    if @user.questions.count >= 1
+      id_array = @user.questions.pluck(:id)
+      rand_question_id = id_array.sample(1).first
+      answering_user = @user.answerings.first
+      if @user.questions.count != 1
+        while rand_question_id == answering_user.answering_id do
+          rand_question_id = id_array.sample(1).first
+        end
+        @question = Question.find(rand_question_id)
+        answering_user.answering_id = rand_question_id
+        answering_user.save
+        else
+      @question = Question.find(rand_question_id)
+      answering_user.answering_id = rand_question_id
+      answering_user.save
+      end
+    else
+      flash[:danger] = '問題が登録されていません。'
+      redirect_to user_questions_path
+    end
   end
 
   def update
