@@ -14,16 +14,19 @@ class ApplicationController < ActionController::Base
   end
 
   # 該当ユーザの問題レコードを全て取得する。
-  # before_actionとして配置する際は、set_userより後段に記述しないと動作しない（はず）。
   def set_questions
-    # @questions = Question.where(user_id: @user.id)
-    # @questions = Question.paginate(page: params[:page], per_page: PAGE_NUMBER)
     @questions = @user.questions.paginate(page: params[:page], per_page: PAGE_NUMBER)
   end
 
   # paramsハッシュから対象のquestionレコードを取得する。
   def set_question
-    @question = Question.find(params[:id])
+    question = Question.find(params[:id])
+    if question.user_id == @user.id
+      @question = @user.questions.find(params[:id])
+    else
+      flash[:danger] = "対象の問題IDにはアクセスできません。"
+      redirect_to user_questions_path 
+    end
   end
 
   # bot用
@@ -37,4 +40,55 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # ログイン済みのユーザーか確認し、未ログインならログインページへ遷移させる。
+  def logged_in_user
+    unless logged_in?
+      store_location
+      flash[:danger] = "ログインしてください。"
+      redirect_to login_url
+    end
+  end
+
+  # アクセスしたユーザーが現在ログインしているユーザーか確認する。
+  def correct_user
+    if params[:user_id].nil?
+      @user = User.find(params[:id])
+    else
+      @user = User.find(params[:user_id])
+    end
+    unless current_user?(@user)
+      flash[:danger] = "アクセス権限がありません。"
+      redirect_to(root_url)
+    end
+  end
+
+  # 管理者権限を保有していない場合、アクセスを拒否する。
+  def admin_user
+    unless current_user.admin?
+      flash[:danger] = "アクセス権限がありません。"
+      redirect_to root_url
+    end
+  end
+
+  # 管理者権限を保有している場合、アクセスを拒否する。
+  def admin_user_reject
+    if current_user.admin?
+      flash[:danger] = "アクセス権限がありません。"
+      redirect_to root_url
+    end
+  end
+
+  # ログイン済みユーザーの場合、ログイン後の画面に強制遷移させる。
+  def logged_in_user_redirect
+    if logged_in?
+      flash_message = controller_name == "users" ? "新規アカウントを作成する場合は、ログアウトしてください。" : "すでにログインしています。"
+      flash[:danger] = "#{flash_message}"
+      user = current_user
+      if user.admin?
+        redirect_to users_path(user)
+      else
+        redirect_to user_questions_path(user)
+      end
+    end
+  end
 end

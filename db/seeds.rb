@@ -6,6 +6,7 @@ User.create!(name: "サンプルユーザー1",
     email: "sample@email.com",
     password: "password",
     password_confirmation: "password",
+    last_login: Time.now,
     admin: false
 )
 
@@ -13,6 +14,7 @@ User.create!(name: "サンプルユーザー2",
     email: "sample2@email.com",
     password: "password",
     password_confirmation: "password",
+    last_login: Time.now,
     admin: false
 )
 
@@ -20,6 +22,14 @@ User.create!(name: "admin",
     email: "admin@email.com",
     password: "password",
     password_confirmation: "password",
+    last_login: Time.now,
+    admin: true
+)
+User.create!(name: "admin2",
+    email: "admin2@email.com",
+    password: "password",
+    password_confirmation: "password",
+    last_login: Time.now,
     admin: true
 )
 

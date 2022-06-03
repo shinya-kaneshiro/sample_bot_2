@@ -1,5 +1,8 @@
 class ChallengesController < ApplicationController
   before_action :set_user, only: [:new, :update, :ajax_update]
+  before_action :logged_in_user, only: :new
+  before_action :correct_user, only: :new
+  before_action :admin_user_reject, only: :new
 
 
   def new
