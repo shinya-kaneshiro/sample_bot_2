@@ -7,7 +7,6 @@ class UsersController < ApplicationController
   def new
     result = logged_in_user_redirect
     if result.nil?
-      debugger
       @user = User.new
     end
   end
