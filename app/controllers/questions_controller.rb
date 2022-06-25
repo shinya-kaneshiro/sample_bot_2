@@ -46,11 +46,16 @@ class QuestionsController < ApplicationController
     if user_questions_count == 0
       redirect_to user_questions_path
     else
-      redirect_url_base = request.referer.split('=').first
-      last_page_number = request.referer.split('=').last
-      redirect_page_number = user_questions_count % PAGE_NUMBER == 0 ? last_page_number.to_i - 1 : last_page_number
-      redirect_url = "#{redirect_url_base}=#{redirect_page_number}"
-      redirect_to redirect_url
+      referer_url = request.referer
+      if referer_url.include?("?page=")
+        redirect_url_base = referer_url.split('?page=').first
+        last_page_number = referer_url.split('=').last
+        redirect_page_number = user_questions_count % PAGE_NUMBER == 0 ? last_page_number.to_i - 1 : last_page_number
+        redirect_url = "#{redirect_url_base}?page=#{redirect_page_number}"
+      else
+        redirect_url = referer_url
+      end
+      redirect_to "#{redirect_url}"
     end
       
   end

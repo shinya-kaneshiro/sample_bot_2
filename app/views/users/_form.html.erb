@@ -41,7 +41,12 @@
           </div>
         </div>
         <% if controller.action_name == "edit" || controller.action_name == "update" %>
-          <%= link_to "キャンセル", user_questions_path(@user.id), class: "btn btn-md btn-danger" %>
+          <% if @user.admin? %>
+            <% provide(:path, users_path) %>
+          <% else %>
+            <% provide(:path, user_questions_path(@user.id)) %>
+          <% end %>
+          <%= link_to "キャンセル", yield(:path), class: "btn btn-md btn-danger" %>
         <% end %>
 
       <% end %>

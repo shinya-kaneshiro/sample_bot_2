@@ -41,7 +41,11 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       flash[:success] = "アカウント情報を更新しました。"
-      redirect_to user_questions_path @user
+      if @user.admin?
+        redirect_to users_path
+      else
+        redirect_to user_questions_path @user
+      end
     else
       render :edit
     end
