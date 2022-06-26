@@ -42,7 +42,7 @@ $cSignUp: #38e03db5;
 
 .jumbotron.jumbotron-long{
     // height: auto;
-    height: 100vh;
+    height: calc(100vh - 32px);
     padding-top: 30px;
 
     &.height-change {
