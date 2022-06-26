@@ -41,8 +41,24 @@ $cSignUp: #38e03db5;
 }
 
 .jumbotron.jumbotron-long{
-    height: auto;
+    // height: auto;
+    height: 100vh;
     padding-top: 30px;
+
+    &.height-change {
+      height: auto;
+    }
+}
+
+// heightを動的に変更させる
+.height-change-line {
+  display: inline-block;
+  height: 1px;
+  width: 100px;
+  position: absolute;
+  background-color: red;
+  top: 0px;
+  opacity: 0;
 }
 
 // テーブル
@@ -448,9 +464,6 @@ input[type=radio] {
     background-color: #00ffff2b;
     height: 50px;
 }
-
-
-
 
 // デバッグウインドウ
 .debug_dump {
