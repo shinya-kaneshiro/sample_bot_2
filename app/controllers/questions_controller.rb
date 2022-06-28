@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
 
   before_action :set_user, only: [:index, :new, :create, :edit, :update, :destroy]
   before_action :logged_in_user, only: [:index, :new, :edit]
-  before_action :correct_user, only: [:new, :create, :edit, :update, :destroy]
+  before_action :correct_user, only: [:index, :new, :create, :edit, :update, :destroy]
   before_action :set_question, only: [:edit, :update, :destroy]
   before_action :set_questions, only: :index
   before_action :admin_user_reject, only: [:index, :new, :edit]
@@ -41,7 +41,7 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
-    flash[:success] = "#「問題ID: #{@question.id}」を削除しました。"
+    flash[:success] = "「問題ID: #{@question.id}」を削除しました。"
     user_questions_count = @user.questions.count
     if user_questions_count == 0
       redirect_to user_questions_path

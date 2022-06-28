@@ -2,13 +2,13 @@
 <% provide(:page_title, "Question Index page") %>
 
 <div class="height-change-line"></div>
-<div class="jumbotron jumbotron-none jumbotron-long height-change">
+<div class="jumbotron jumbotron-none jumbotron-long">
   <div class="container">
     <div class="row form-row-common">
       <h1 class="headline page-title"><%= yield(:page_title) %></h1>
       <%= render 'shared/flash_messages' %>
 
-      <div class="willpaginate-button-top"><%= will_paginate %></div>
+      <div class="willpaginate-button-top" data-turbolinks="false"><%= will_paginate %></div>
       <table class="table table-bordered table-striped table-common">
         <thead class="table-column">
           <tr>
@@ -35,7 +35,7 @@
           <% end %>
         </tbody>
       </table>
-      <%= will_paginate %>
+      <div  data-turbolinks="false"><%= will_paginate %></div>
     </div>
   </div>
 </div>

@@ -41,7 +41,7 @@
             </div>
           </li>
         <% end %>
-        <li><%= link_to "Logout", logout_path, method: :delete, class: "nav-link" %></li>
+        <li><%= link_to "Logout", logout_path, method: :delete, data: { confirm: "ログアウトします。よろしいですか？"}, class: "nav-link" %></li>
       <% end %>
     </ul>
   </div>
