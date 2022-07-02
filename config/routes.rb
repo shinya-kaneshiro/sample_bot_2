@@ -18,4 +18,6 @@ Rails.application.routes.draw do
     patch 'challenges/update_proficiency', to: 'challenges#update_proficiency'
   end
 
+  get    '/layout', to: 'sessions#show'
+
 end

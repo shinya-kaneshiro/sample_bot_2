@@ -31,7 +31,8 @@ $cSignUp: #38e03db5;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    height: 100vh;
+    // height: 100vh;
+    height: calc(100vh - 32px);
  }
  
 .jumbotron-none {
@@ -41,12 +42,15 @@ $cSignUp: #38e03db5;
 }
 
 .jumbotron.jumbotron-long{
-    // height: auto;
     height: calc(100vh - 32px);
     padding-top: 30px;
 
     &.height-change {
       height: auto;
+      // transition: height 3s ease;
+      &.challenge-new {
+        padding-bottom: calc(17vh - 1px);
+      }
     }
 }
 
@@ -82,12 +86,23 @@ $cSignUp: #38e03db5;
 }
 
 // フォーム
+.form-content {
+  margin-top: 8vh;
+}
+
 .form-row-common {
     justify-content: center;
 }
 
-.challenge-form-top {
-    margin-top: 5px;
+.challenge-form {
+    margin-left: 0px;
+    margin-right: 0px;
+    &__top {
+      margin-top: 5vh;
+    }
+    &__bottom {
+      width: 100%;
+    }
 }
 
 .form-label-common {
@@ -144,6 +159,10 @@ $cSignUp: #38e03db5;
 
     &.page-title {
         font-size: 2rem;
+    }
+
+    &__mt {
+      margin-top: 4vh;
     }
 }
 
@@ -434,6 +453,7 @@ input[type=button].btn-other-question {
     border-top: 8px double white;
     border-right: 8px double black;
     border-bottom: 8px double black;
+    padding-right: 5vw
 }
 
 input[type=radio] {
@@ -464,6 +484,23 @@ input[type=radio] {
 .challenge-question {
     background-color: #00ffff2b;
     height: 50px;
+}
+
+// レイアウト実験用
+.challenge-bm-parent {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 70px;
+}
+.challenge-bm-child {
+  display: inline-block;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 15px;
+  &__left {
+    display: flex;
+  }
 }
 
 // デバッグウインドウ
