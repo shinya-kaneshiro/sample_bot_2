@@ -27,11 +27,10 @@ $cSignUp: #38e03db5;
 
 // 画面背景
 .jumbotron {
-    background-image: url('../images/top_page_image.jpg');
+    background-image: url('../images/top-page-image.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    // height: 100vh;
     height: calc(100vh - 32px);
  }
  
@@ -500,6 +499,23 @@ input[type=radio] {
     margin-bottom: 15px;
   &__left {
     display: flex;
+  }
+}
+
+// QRコード表示用
+.qr-code-box {
+  height: 150px;
+  justify-content: center;
+  margin-top: 5vh;
+
+  &__img {
+    display: inline-block;
+    width: 150px;
+    border-radius: 15px;
+    background-color: #d5ff667d;
+    background-image: url('../images/qr-code-afc.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
   }
 }
 
