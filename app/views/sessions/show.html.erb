@@ -1,93 +1,420 @@
+<% content_1 = 
+"まず、ポートフォリオをご覧いただければと思います。
+herokuの無料枠にデプロイしている為、初回アクセス時に10秒～20程時間がかかる場合があります。
+"
+%>
+
+<% content_2 = 
+"HTML/CSS、JavaScript、及びサードパーティ製のライブラリを利用した1ページだけのサイトです。
+
+cssについてはSass形式で記述し、メディアクエリを用いたレスポンシブデザインになっています。
+
+ページ内にボタンなどのリンクがありますが、
+モバイルサイズの場合に表示されるナビゲーション用のメニューボタン以外は動作しない作りになっています。
+
+また、このサイトは、Udemyの教材を学習しながら作成したものです。
+教材は「【JavaScript＆CSS】ガチで学びたい人のためのWEB開発徹底実践（フロントエンド編）」です。
+その為、教材作成者の名称が、コピーライトとしてサイトのフッターなどに表示されています。
+
+サイト内で使われている技術は全て教材の内容ですが、
+一通り全ての内容を理解しつつ、自分なりに要点をまとめてありますので、
+再現する事はできますし、似たような実装をしたい場合にも、対応できます。
+
+こちらが、ポートフォリオのURLになります。
+https://sk-my-site.herokuapp.com
+"
+%>
+
+<% content_3 =
+"RubyOnRails、Bootstrap4、HTML/CSS、JavaScriptを利用した簡易的な学習用のアプリケーションです。
+
+外部APIとして、LINEのMessagingAPIを利用している為、LINEアプリ上からも利用可能です。
+
+このアプリケーションは、オンラインスクールで学んだ内容を元に作成していますが、
+カリキュラムに沿って作成したようなものではなく、
+アプリケーションの発想から、画面の設計、DBの設計、画面のアクセス制御など、全て一から自分で作成したものです。
+"
+%>
+
+<% content_3_2 =
+"自身で問題（問題内容、正解内容、習熟度）を登録し、出題用の画面で復習する事ができます。
+LINEアプリ上では、予め登録されている問題を用いた復習のみが可能です。
+
+一般ユーザ、管理者ユーザと権限が分かれていて、管理者ユーザの場合、ユーザー削除が可能です。
+ユーザーが削除された場合、紐づく問題内容や回答中のステータスも同時に削除されます。
+
+現状では、単語帳の代わりになる程度のもので、あまり実用的ではありませんが、
+今後、csvでの問題一括登録や、問題のジャンル分け、習熟度毎に問題を出題する機能、学習状況を可視化できるグラフ機能、問題の出題タイミングを管理する機能などを追加していく予定です。
+"
+%>
+
+<% content_3_3 =
+"・URL
+https://tranquil-bastion-58041.herokuapp.com/
+
+・一般ユーザー（予めテスト用の問題が登録されているサンプルユーザーです）
+メールアドレス: sample@email.com
+パスワード: password
+
+　※サインアップ画面からユーザー登録も可能です。
+
+・adminユーザー
+メールアドレス: admin@email.com
+パスワード: password
+"
+%>
+
+<% content_3_4 =
+"・問題一覧画面 … 登録した問題が一覧表示されます。問題編集画面への遷移、問題の削除が可能です。
+・問題登録画面 … 問題内容、正解内容、習熟度の設定ができます。
+・問題編集画面 … 問題の編集ができます。
+・チャレンジ画面 … 登録済みの問題がランダムに出題されます。
+・アカウント編集画面 … ユーザー情報の編集ができます。
+・ユーザー一覧画面 … 登録済みのユーザーが一覧表示されます。ユーザー削除が可能です。
+※adminユーザーのみ、ユーザー一覧画面へアクセスできます。また、adminユーザーは問題関連、チャレンジ関連の画面へはアクセスできません。
+"
+%>
+
+<% content_3_5 =
+"少し面倒ですが、以下の手順を踏んで頂く必要があります。
+
+◇-- アプリケーションをLINEアプリの友達に追加する工程
+　1.ブラウザでアプリケーションTOPページを表示します。
+　　https://tranquil-bastion-58041.herokuapp.com/
+
+　2.TOPページに表示されているQRコードを、スマホのLINEアプリで読み取り、For_AgainstFCを友達に追加します。
+
+◇-- LINEのIDを取得する工程
+　1.For_AgainstFCのトーク画面へ移動し、画面下部の「Tap here」をタップしてリッチメニューを表示します。
+
+　2.リッチメニュー右上の「メニュー切り替え」をタップし、メニューを切り替えます。
+
+　3.「ID取得」をタップし、IDを表示させます。
+
+　※表示されたIDをブラウザ側で入力する必要がありますので、このタイミングでPCのLINEアプリに切り替えて頂くとコピペが楽です。
+
+◇-- アカウント情報の更新
+　1.ブラウザ側でサンプルユーザーでログインします。
+　　https://tranquil-bastion-58041.herokuapp.com/
+　　メールアドレス: sample@email.com
+　　パスワード: password
+
+　2.ナビバーからアカウント編集画面に移動し、「LINE ID」の欄に、LINEアプリ上で表示させたIDを入力し、アカウント情報を更新します。
+
+　※この時点で、スマホ側のLINEアプリから「問題リクエスト」をタップすると、問題が応答されるようになります。
+
+◇-- LINEアプリ側での復習について
+　・問題リクエストをタップすると、登録済みの問題がランダムに応答されます。
+　・この状態で、回答内容（任意の文字列）を送信すると、正解内容が応答されます。
+　・正解内容の下部に表示されている習熟度ボタン（数値1,2,3のボタン）をタップすると、習熟度が送信されます。
+　・「続けますか？」の応答内容欄の中で「続ける」ボタンをタップすると、新たな問題が応答されます。
+"
+%>
+
+<% content_4_1 =
+"・Sass形式でのセレクタの指定方法について、ある程度理解しています。
+例えば、親セレクタ内で「& > .second」と記述した場合、一階層下のsecondクラスを持つタグのみ対象となる事がわかります。
+
+・基本的なレイアウトの配置方法についてある程度理解しています。
+例えば、親にあたるブロック要素が「position: relative;」を持っている場合、子にあたるブロック要素を中央に配置する為のプロパティと値がわかります。
+
+・ローカルスタックコンテキストの生成方法を理解しています。
+positionがstatic以外、且つ、z-indexが数値でセットされている場合に生成される事、
+また、z-indexによる優先順位付けは、同一のスタックコンテキスト内でのみ行われる事も認識しています。
+
+・擬似クラス（:nth-child、:nth-of-type、:not）を利用した経験があります。
+例えば、nth-childを利用することで、最初の要素、偶数番目、奇数番目、最後の要素、に対してスタイルをあてられる事を理解しています。
+また、for文とnth-childを併用することで、各要素を時間差で表示させるコードをDRYに記述できる事を理解しています。
+
+・WEBフォント（Googleフォント）を導入する事ができます。
+また、WEBフォントを利用する事で、デバイスのフォントに依存せずにフォント指定が可能になる事を理解しています。
+
+・SEO対策として、適切なHTMLタグを利用する必要がある事を認識しています。
+"
+%>
+
+<% content_4_2 =
+"・DOMについて、なんとなく概要を理解しています。
+例えば、
+「document」がHTML文書全体を指すこと、
+「xxx.innerHTML」でHTML要素にアクセスできること、
+「xxx.textContent」でテキスト自体にアクセスできること、
+「xxx.classList」を利用して、クラスの一覧を取得したり、追加、削除ができること、
+querySelector('検索対象')で、最初に見つかった要素を取得できること、
+querySelectorALL('検索対象')で、検索対象要素全てを、NodeListとして取得できること、
+などです。
+
+・コールバック関数が、他の関数の引数として渡す関数であることを認識しています。
+
+・オブジェクトを定義する際、オブジェクト内に関数を含められる事を認識しています。
+
+・「DOMContentLoaded」イベントと、「load」イベントの違いを理解しています。
+「DOMContentLoaded」はDOMツリー作成直後のタイミング、
+「load」は、画像や動画ファイル、スタイルやjsの読み込みなどが全て終わった後のタイミングであることを理解しています。
+
+・ブラウザのレンダリング処理について、ほんの少し理解しています。
+例えば、、、
+大きく分けて5つの工程があること、
+変更方法によって再計算量が異なるので、計算量がより少ない方法を選択したほうが良いこと、
+などです。
+
+・インターセクションオブザーバーを利用した経験があります。
+HTML要素の検知をトリガーとして、、、
+クラスを付与することで、heightを変化させる、
+文字列をアニメーションさせる、
+画像をスライドさせる、
+などの用途で利用しました。
+
+・クラス継承について、ほんの少し知識があります。
+「class 継承元クラス名 extends 継承先クラス名」で継承できる事、
+コンストラクタ内に「super()」と記述することで、継承元クラスのコンストラクタ内容を反映できる事、
+同名のメソッド名をつける事で、継承したメソッドを上書きできる事、
+などです。
+
+・thisについて、少し理解しています。
+ややズレた認識かも知れませんが、thisには、直近で呼ばれたオブジェクトに準じた値が入ると認識しています。
+また、thisを呼び出すタイミング次第では、予めbindしておく必要がある事を認識しています。
+
+・Chromeデベロッパーツールを用いて、JavaScriptのデバッグが、ほんの少しできます。
+例えば、特定の時点におけるthisの中身、変数の中身を確認する事ができます。
+
+・サードパーティ製ライブラリを利用した経験があります。
+「greensock」のライブラリ
+「pace」のライブラリ
+「swiper」のライブラリ
+などです。
+tween24も触ってみたいと思っています。
+"
+%>
+
+<% content_4_3 =
+"まっさらなSQLを書いたことはあまりありませんが、
+ORMを通して、RailsのDB（sqlite3）を操作した経験があります。
+WHEREとFIND_BYの違いや、ORDERで抽出結果を並び替えられることなどを理解しています。
+"
+%>
+
+<% content_4_4 =
+"・RubyOnRailsについては、オンラインスクールで、簡単なアプリが実装できるレベルまで学びました。
+
+・Ruby単体については、ほぼ独学です。
+「プロを目指す人の為のRuby入門」という書籍や、ネット情報の内容をもとに、学習しました。
+
+・ざっくりですが、「Ruby/RubyOnRails」の現状のスキル感としましては、「シンプルなアプリなら作れる」というレベルです。
+"
+%>
+
+<% content_4_5 =
+"・Pythonについては、完全に独学です。
+「退屈なことはPythonにやらせよう」という書籍や、ネット情報の内容をもとに、学習しました。
+
+・Pythonについては、アプリケーションを作成した事はありません。
+ターミナルからpyファイルを実行し、必要な情報を都度インプットすることで、自動的に処理が行われる、というコードのみ記述した事があります。
+
+・作成した事がある機能や処理は、以下の通りです。
+　・WEBサイトの画像やデータをスクレイピングする処理（複数ページを跨いでの処理にも対応）
+　・スクレイピングしたデータをExcelへ自動で書き込む処理
+　・pyautoguiを用いた画面操作の自動化
+　・特定のディレクトリに配置した複数のファイルについて、ファイル名の冒頭に任意の文字列を追加しつつ、一括でファイル名を変更する処理
+
+・「python」の現状のスキル感としましては、「もともと手作業で行っていた単純な作業であれば、徐々に自動化することができる」というレベルです。
+"
+%>
+
+<% content_4_6 =
+"・ローカル環境での変更内容をリモートリポジトリにpushする処理や、HTTPSやSSHでGithubと連携させる処理などを利用した事があります。
+
+・複数人で利用する場合の流れについては、なんとなく概要がわかる程度で、実際に利用したことはありません。
+"
+%>
+
+<% content_4_7 =
+"・curlコマンドを利用した経験があります。
+LINEのMessagingAPIを実装する過程で、応答内容などのデータを登録/更新する際に利用しました。
+
+・vimを利用した経験があります。
+Railsの暗号化されたファイル（credentials.yml.enc）を編集する際に利用しました。
+"
+%>
+
+<% content_5 =
+"◆ 中途半端ですが、ITの基礎的な知識が断片的にあります。
+
+・OSI参照モデルについて、なんとなく概要を理解しています。
+各レイヤごとのプロトコルについてまで理解は及んでいませんが、
+各レイヤ毎に通信やリンクの確立が必要であることや、
+TCPIPのポート状態として、「LISTENING」と「ESTABLISHED」があることなどを、断片的に理解しています。
+
+・広範囲に及ぶネットワークや関連機器の運用保守を行っていた為、通信ルートをイメージするのが比較的得意です。
+規則通りに通信が進む事と、規則通りにプログラムが読み込まれていく点が似ているので、
+エラーが発生した時のデバッグに少し役に立っていると感じています。
 
 
-<%
-=begin%>
+◆ その他
+・報連相の使い分けや、重要性を理解しています。
 
-<div class="test-parent">
-  <div class="test-child test-child__left"></div>
-  <div class="test-child test-child__right"></div>
-</div>
+・作業状況に関する報告書の作成経験があります。
+発生した障害や問い合わせに関して、発生から解決に至るまでの内容全てをリアルタイムで記録し、関連部署やお客様へ共有する必要がありました。
+その経験から、重要な内容に関しては出来るだけ認識齟齬を生まない文章（解釈の分岐を生まない文章）を作成したり、
+誤字脱字などが無いように徹底する事に慣れています。
 
-<div class="container">
-<div class="row test-parent">
-  <div class="col-md-12 col-lg-8 test-child test-child__left"></div>
-  <div class="col-md-12 col-lg-4 test-child test-child__right"></div>
-</div>
-</div>
+・手順書などのドキュメント作成経験があります。
+"
+%>
 
+<% content_6_1 =
+"・OSI参照モデルについて、なんとなく概要を理解しています。
+各レイヤごとのプロトコルについてまで理解は及んでいませんが、
+各レイヤ毎に通信やリンクの確立が必要であることや、
+TCPIPのポート状態として、「LISTENING」と「ESTABLISHED」があることなどを、断片的に理解しています。
 
-<%
-=end%>
+・広範囲に及ぶネットワークや関連機器の運用保守を行っていた為、通信ルートをイメージするのが比較的得意です。
+規則通りに通信が進む事と、規則通りにプログラムが読み込まれていく点が似ているので、
+エラーが発生した時のデバッグに少し役に立っていると感じています。
+"
+%>
 
+<% content_6_2 =
+"・報連相の使い分けや、重要性を理解しています。
 
-<% provide(:title, 'Challenge') %>
-<% provide(:page_title, "Challenge page") %>
+・作業状況に関する報告書の作成経験があります。
+発生した障害や問い合わせに関して、発生から解決に至るまでの内容全てをリアルタイムで記録し、関連部署やお客様へ共有する必要がありました。
+その経験から、重要な内容に関しては出来るだけ認識齟齬を生まない文章（解釈の分岐を生まない文章）を作成したり、
+誤字脱字などが無いように徹底する事に慣れています。
 
+・手順書などのドキュメント作成経験があります。
+"
+%>
 
+<% content_7 =
+"自己PR欄に入りきらなかった内容は、これで全てになります。
+長文失礼いたしました。
+また、最後までお付き合いいただき、ありがとうございました。
+"
+%>
 
+<div class="self-pr-area">
+  <div class="card self-pr-box self-pr-box__parent">
+    <div class="card-header">現状のスキル感について</div>
+    <div class="card-body">
+      <%= text_url_to_link(safe_join((h(content_1)).split("\n"),tag(:br))).html_safe %>
 
-<div class="height-change-line"></div>
-<div class="jumbotron jumbotron-none jumbotron-long challenge-new">
-  <div class="container">
-    <h1 class="headline page-title"><%= yield(:page_title) %></h1>
-    <%= render 'shared/error_messages', object: @user %>
-    <%= render 'shared/flash_messages' %>
-
-  <div class="row challenge-form challenge-form__top">
-    <div class="col-lg-6">
-      <div class="card">
-        <div class="card-header challenge-question">
-          <%= "問題ID: #"%>
-        </div>
-        <div class="card-body d-flex align-items-center justify-content-center">
-          <div><h5 class="card-title"><%=   %></h5></div>
+      <div class="card self-pr-box self-pr-box__child">
+        <div class="card-header">ポートフォリオ【その１】について</div>
+        <div class="card-body">
+          <%= text_url_to_link(safe_join((h(content_2)).split("\n"),tag(:br))).html_safe %>
         </div>
       </div>
 
-      <div class="other-question-parent">
-        <input type="button" value="他の問題" class="btn-other-question" onclick="window.location.reload(true);" />
-      </div>
-
-      <div class="input-group challenge-margin">
-        <div class="input-group-prepend">
-          <span class="input-group-text challenge-input">回答入力欄</span>
+      <div class="card self-pr-box self-pr-box__child">
+        <div class="card-header">ポートフォリオ【その２】について</div>
+        <div class="card-body">
+          <%= text_url_to_link(safe_join((h(content_3)).split("\n"),tag(:br))).html_safe %>
+          <div class="card self-pr-box self-pr-box__child self-pr-box__child-second">
+            <div class="card-header">アプリケーションの概要</div>
+            <div class="card-body">
+              <%= text_url_to_link(safe_join((h(content_3_2)).split("\n"),tag(:br))).html_safe %>
+            </div>
+          </div>
+          <div class="card self-pr-box self-pr-box__child self-pr-box__child-second">
+            <div class="card-header">ログイン用の情報</div>
+            <div class="card-body">
+              <%= text_url_to_link(safe_join((h(content_3_3)).split("\n"),tag(:br))).html_safe %>
+            </div>
+          </div>
+          <div class="card self-pr-box self-pr-box__child self-pr-box__child-second">
+            <div class="card-header">各画面について</div>
+            <div class="card-body">
+              <%= text_url_to_link(safe_join((h(content_3_4)).split("\n"),tag(:br))).html_safe %>
+            </div>
+          </div>
+          <div class="card self-pr-box self-pr-box__child self-pr-box__child-second">
+            <div class="card-header">LINE側での機能を試される場合</div>
+            <div class="card-body">
+              <%= text_url_to_link(safe_join((h(content_3_5)).split("\n"),tag(:br))).html_safe %>
+            </div>
+          </div>
         </div>
-        <textarea class="form-control" aria-label="With textarea" rows="7"></textarea>
       </div>
 
-      <button class="correct-button" onclick="document.querySelector('.correct-form').classList.toggle('correct-view');"><span>答えを表示する</span>答えを表示する</button>
-
-    </div>
-
-
-    <div class="col-lg-6">
-      <div class="correct-form">
-        <div class="correct-title">正解</div>
-        <div class="correct-view-base">
-          <textarea class="correct-view-area" rows="12"><%=   %></textarea>
+      <div class="card self-pr-box self-pr-box__child">
+        <div class="card-header">ポートフォリオだけでは伝わりづらい点について</div>
+        <div class="card-body">
+          <div class="card self-pr-box self-pr-box__child self-pr-box__child-second">
+            <div class="card-header">HTML/CSS</div>
+            <div class="card-body">
+              <%= text_url_to_link(safe_join((h(content_4_1)).split("\n"),tag(:br))).html_safe %>
+            </div>
+          </div>
+          <div class="card self-pr-box self-pr-box__child self-pr-box__child-second">
+            <div class="card-header">JavaScript</div>
+            <div class="card-body">
+              <%= text_url_to_link(safe_join((h(content_4_2)).split("\n"),tag(:br))).html_safe %>
+            </div>
+          </div>
+          <div class="card self-pr-box self-pr-box__child self-pr-box__child-second">
+            <div class="card-header">SQL</div>
+            <div class="card-body">
+              <%= text_url_to_link(safe_join((h(content_4_3)).split("\n"),tag(:br))).html_safe %>
+            </div>
+          </div>
+          <div class="card self-pr-box self-pr-box__child self-pr-box__child-second">
+            <div class="card-header">Ruby/RubyOnRails</div>
+            <div class="card-body">
+              <%= text_url_to_link(safe_join((h(content_4_4)).split("\n"),tag(:br))).html_safe %>
+            </div>
+          </div>
+          <div class="card self-pr-box self-pr-box__child self-pr-box__child-second">
+            <div class="card-header">Python</div>
+            <div class="card-body">
+              <%= text_url_to_link(safe_join((h(content_4_5)).split("\n"),tag(:br))).html_safe %>
+            </div>
+          </div>
+          <div class="card self-pr-box self-pr-box__child self-pr-box__child-second">
+            <div class="card-header">Git/Github</div>
+            <div class="card-body">
+              <%= text_url_to_link(safe_join((h(content_4_6)).split("\n"),tag(:br))).html_safe %>
+            </div>
+          </div>
+          <div class="card self-pr-box self-pr-box__child self-pr-box__child-second">
+            <div class="card-header">その他</div>
+            <div class="card-body">
+              <%= text_url_to_link(safe_join((h(content_4_7)).split("\n"),tag(:br))).html_safe %>
+            </div>
+          </div>
         </div>
       </div>
+      <br>
+      「現状のスキル感」について、以上になります。
     </div>
   </div>
 
-
-
-  <%= form_with(url: '#', method: :patch, local: true, class: "challeng-bm-parent") do |f| %>
-  <div class="row challenge-form challenge-form__bottom">
-
-    <div class="col-md-12 col-lg-6 challeng-bm-child challeng-bm-child__left">
-      <div class="proficiency-title">習熟度の設定</div>
-      <div class="proficiency-aria">
-        <%= f.radio_button :value, 1, class: "lavel-1" %>
-        <%= f.radio_button :value, 2, class: "lavel-2" %>
-        <%= f.radio_button :value, 3, class: "lavel-3" %>
+  <div class="card self-pr-box self-pr-box__parent">
+    <div class="card-header">前職までの経験から、活かせそうなスキルや経験</div>
+    <div class="card-body">
+      <div class="card self-pr-box self-pr-box__child">
+        <div class="card-header">中途半端ですが、ITの基礎的な知識が断片的にあります。</div>
+        <div class="card-body">
+          <%= text_url_to_link(safe_join((h(content_6_1)).split("\n"),tag(:br))).html_safe %>
+        </div>
       </div>
+      <div class="card self-pr-box self-pr-box__child">
+        <div class="card-header">その他</div>
+        <div class="card-body">
+          <%= text_url_to_link(safe_join((h(content_6_2)).split("\n"),tag(:br))).html_safe %>
+        </div>
+      </div>
+      <br>
+      「前職までの経験から、活かせそうなスキルや経験」について、以上になります。
     </div>
-
-    <div class="col-md-12 col-lg-6 challeng-bm-child challeng-bm-child__right">
-      <%= f.submit "次の問題", class: "btn btn-primary btn-block btn-next-question challeng-bm-child challeng-bm-child__right" %>
-    </div>
-    <% end %>
   </div>
+
+  <div class="card self-pr-box self-pr-box__parent">
+    <div class="card-header">最後に</div>
+    <div class="card-body">
+      <%= text_url_to_link(safe_join((h(content_7)).split("\n"),tag(:br))).html_safe %>
+    </div>
+  </div>
+  <div class="last-mb"></div>
 
 </div>

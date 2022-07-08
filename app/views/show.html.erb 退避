@@ -1,0 +1,93 @@
+
+
+<%
+=begin%>
+
+<div class="test-parent">
+  <div class="test-child test-child__left"></div>
+  <div class="test-child test-child__right"></div>
+</div>
+
+<div class="container">
+<div class="row test-parent">
+  <div class="col-md-12 col-lg-8 test-child test-child__left"></div>
+  <div class="col-md-12 col-lg-4 test-child test-child__right"></div>
+</div>
+</div>
+
+
+<%
+=end%>
+
+
+<% provide(:title, 'Challenge') %>
+<% provide(:page_title, "Challenge page") %>
+
+
+
+
+<div class="height-change-line"></div>
+<div class="jumbotron jumbotron-none jumbotron-long challenge-new">
+  <div class="container">
+    <h1 class="headline page-title"><%= yield(:page_title) %></h1>
+    <%= render 'shared/error_messages', object: @user %>
+    <%= render 'shared/flash_messages' %>
+
+  <div class="row challenge-form challenge-form__top">
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-header challenge-question">
+          <%= "問題ID: #"%>
+        </div>
+        <div class="card-body d-flex align-items-center justify-content-center">
+          <div><h5 class="card-title"><%=   %></h5></div>
+        </div>
+      </div>
+
+      <div class="other-question-parent">
+        <input type="button" value="他の問題" class="btn-other-question" onclick="window.location.reload(true);" />
+      </div>
+
+      <div class="input-group challenge-margin">
+        <div class="input-group-prepend">
+          <span class="input-group-text challenge-input">回答入力欄</span>
+        </div>
+        <textarea class="form-control" aria-label="With textarea" rows="7"></textarea>
+      </div>
+
+      <button class="correct-button" onclick="document.querySelector('.correct-form').classList.toggle('correct-view');"><span>答えを表示する</span>答えを表示する</button>
+
+    </div>
+
+
+    <div class="col-lg-6">
+      <div class="correct-form">
+        <div class="correct-title">正解</div>
+        <div class="correct-view-base">
+          <textarea class="correct-view-area" rows="12"><%=   %></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <%= form_with(url: '#', method: :patch, local: true, class: "challeng-bm-parent") do |f| %>
+  <div class="row challenge-form challenge-form__bottom">
+
+    <div class="col-md-12 col-lg-6 challeng-bm-child challeng-bm-child__left">
+      <div class="proficiency-title">習熟度の設定</div>
+      <div class="proficiency-aria">
+        <%= f.radio_button :value, 1, class: "lavel-1" %>
+        <%= f.radio_button :value, 2, class: "lavel-2" %>
+        <%= f.radio_button :value, 3, class: "lavel-3" %>
+      </div>
+    </div>
+
+    <div class="col-md-12 col-lg-6 challeng-bm-child challeng-bm-child__right">
+      <%= f.submit "次の問題", class: "btn btn-primary btn-block btn-next-question challeng-bm-child challeng-bm-child__right" %>
+    </div>
+    <% end %>
+  </div>
+
+</div>

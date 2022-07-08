@@ -519,6 +519,42 @@ input[type=radio] {
   }
 }
 
+// 自己PR欄の拡張用
+.self-pr-area {
+  position: absolute;
+  height: auto;
+  width: 100%;
+  background-color: #00adff42;
+  filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.3));
+}
+
+.card.self-pr-box {
+  &__parent {
+  width: 80vw;
+  margin: 5vh 10vw 0vh;
+    & .card-header {
+      background-color: #ffeb0066;
+    }
+  }
+  &__child {
+    margin-top: 3vh;
+    width: 98%;
+    margin-left: 1%;
+    filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.3));
+    & .card-header {
+        background-color: rgb(246 255 0 / 18%);
+    }
+  }
+  &__child-second {
+    & .card-header {
+        background-color: #ff00001a;
+    }
+  }
+}
+.last-mb {
+  margin-bottom: 5vh;
+}
+
 // デバッグウインドウ
 .debug_dump {
      clear: both;

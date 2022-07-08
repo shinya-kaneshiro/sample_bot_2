@@ -1,0 +1,53 @@
+<%
+=begin%>
+ <nav class="navbar navbar-expand-lg navbar-light bg-light"> 
+<%
+=end%>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a><%= link_to "AgainstFc", root_path, class: "navbar-brand" %></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <% if logged_in? %>
+    <% unless @current_user.admin? %>
+      <% provide(:class_fication, user_questions_path(@current_user)) %>
+    <% else %>
+      <% provide(:class_fication, users_path) %>
+    <% end %>
+  <% else %>
+    <% provide(:class_fication, root_path) %>
+  <% end %>
+
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item"><%= link_to "Home", yield(:class_fication), class: "nav-link" %></li>
+      <% if logged_in? %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            User
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a><%= link_to "アカウント編集", edit_user_path(@current_user), class: "dropdown-item" %></a>
+            <% if @current_user.admin? %>
+              <a><%= link_to "ユーザ一覧画面", yield(:class_fication), class: "dropdown-item" %></a>
+            <% end %>
+          </div>
+        </li>
+        <% unless @current_user.admin? %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Question
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a><%= link_to "問題登録", new_user_question_path(current_user), class: "dropdown-item" %></a>
+              <a><%= link_to "問題一覧画面", user_questions_path(current_user), class: "dropdown-item" %></a>
+              <a><%= link_to "チャレンジ画面", new_user_challenge_path(current_user), class: "dropdown-item" %></a>
+            </div>
+          </li>
+        <% end %>
+        <li><%= link_to "Logout", logout_path, method: :delete, data: { confirm: "ログアウトします。よろしいですか？"}, class: "nav-link" %></li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
